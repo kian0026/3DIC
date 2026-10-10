@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/__pycache__": true
+    },
+    "cucumberautocomplete.steps": [
+        "scheme/step_defs/*.py"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "cmake.sourceDirectory": "/home/sichip/code/scheme/installer",
+}

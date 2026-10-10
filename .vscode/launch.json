@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    //git Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File (sudo)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "sudo": false,
+            "args": [
+            ],
+            "cwd": "${workspaceFolder}/",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/evaluator"
+            },
+            "preLaunchTask": "sudo-python-debug"
+        },
+        {
+            "name": "test evaluator",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "evaluator/score.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/cases/sample001/sample001.output.guide",
+                "--lefs",
+                "${workspaceFolder}/cases/sample001/sample001.input.lef",
+                "--input-def",
+                "${workspaceFolder}/cases/sample001/sample001.input.def",
+                "--thermal-json",
+                "${workspaceFolder}/cases/sample001/sample001.thermal.input.json",
+                "--output-dir",
+                "${workspaceFolder}/output/sample001"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/evaluator"
+            },
+            "preLaunchTask": "sudo-python-debug"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "tasks": [
+    {
+      "label": "sudo-python-debug",
+      "type": "shell",
+      "command": "echo 'Starting sudo debug session...'",
+      "problemMatcher": []
+    }
+  ]
+}

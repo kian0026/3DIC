@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "fidelity": {
+    "wirelength": "guide-rectangle Manhattan MST proxy",
+    "congestion": "GRT guide demand / merged DEF track capacity",
+    "drc": "not available; overflow entries are only a mock-DRT risk proxy",
+    "thermal": "synthetic"
+  },
+  "inputs": {
+    "guide": "/data/code/eda-contest/scheme/workspace/routing-benchmark/eda_elite_challenge2026_sample001/sample001.output.guide",
+    "lefs": [
+      "/data/code/eda-contest/scheme/workspace/routing-benchmark/eda_elite_challenge2026_sample001/sample001.input.lef"
+    ],
+    "defs": [
+      "/data/code/eda-contest/scheme/workspace/routing-benchmark/eda_elite_challenge2026_sample001/sample001.input.def"
+    ],
+    "thermal_json": "/data/code/eda-contest/scheme/workspace/routing-benchmark/eda_elite_challenge2026_sample001/sample001.thermal.output.json"
+  },
+  "grid": {
+    "dbu_per_micron": 2000.0,
+    "rows": 42,
+    "cols": 42,
+    "mapped_thermal_xy_nodes": 1764
+  },
+  "wirelength": {
+    "total_dbu": 2192100.0,
+    "total_um": 1096.05,
+    "guide_mst_proxy_dbu": 2192100.0,
+    "hpwl_reference_dbu": 2030850.0,
+    "normalized": 1.0794002511263756,
+    "tsv_count": 3,
+    "tsv_cost_dbu_each": 2000.0
+  },
+  "congestion": {
+    "max_overflow": 2,
+    "average_overflow": 0.02553191489361702,
+    "total_overflow": 18,
+    "used_layer_gcells": 705,
+    "overflow_entries": 14,
+    "mock_drt_risk_hotspots": 14
+  },
+  "thermal_tsv": {
+    "synthetic": true,
+    "ambient_temperature": 25.0,
+    "tsv_points": 3,
+    "correlation_above_ambient": 0.003982792276705475
+  },
+  "score": {
+    "total_score": 81.23960288621508,
+    "grade": "A-",
+    "wirelength_score": 41.68981798275626,
+    "congestion_score": 27.0,
+    "thermal_score": 12.54978490345882,
+    "wirelength_quality": 0.9264403996168058,
+    "congestion_quality": 0.9,
+    "thermal_quality": 0.5019913961383528,
+    "weights": {
+      "wirelength": 0.45,
+      "congestion": 0.3,
+      "thermal_tsv": 0.25
+    }
+  },
+  "warnings": [
+    "GCELLGRID X ended before DIEAREA; a clipped edge GCell was appended",
+    "GCELLGRID Y ended before DIEAREA; a clipped edge GCell was appended",
+    "thermal score uses a deterministic synthetic placement-density map"
+  ]
+}
