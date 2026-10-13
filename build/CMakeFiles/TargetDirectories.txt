@@ -1,3 +1,0 @@
-D:/3DIC_competition/3DIC_master/build/CMakeFiles/thdic_router.dir
-D:/3DIC_competition/3DIC_master/build/CMakeFiles/edit_cache.dir
-D:/3DIC_competition/3DIC_master/build/CMakeFiles/rebuild_cache.dir

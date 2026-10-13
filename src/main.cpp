@@ -1,4 +1,5 @@
 #include "parser/DefParser.h"
+#include "parser/DesignDatabase.h"
 #include "parser/LefParser.h"
 #include "parser/ThermalParser.h"
 
@@ -64,6 +65,32 @@ int main(int argc, char** argv) {
     std::cout << "reconcile: " << (thermalOk ? "OK" : "WITH WARNINGS")
               << " (missing=" << thermal.lastMissing()
               << ", orphans=" << thermal.lastOrphans() << ")\n";
-    // 第 5 步（DesignDatabase: 温度接入代价函数）/ 第 6 步（布线）后续接入。
+
+    thdic::parser::DesignDatabase db;  // 第 5 步：网格 + 端点 + 温度
+    if (!db.build(lef, def, thermal)) {
+        std::cout << "designDB : 自检未通过, 不进入布线\n";
+        return 1;
+    }
+    const thdic::parser::DesignStats& st = db.stats();
+    std::cout << "-- 端点表 -- nets=" << st.nets
+              << " endpoints=" << st.endpoints
+              << " (IO=" << st.ioEndpoints << " inst=" << st.instEndpoints
+              << " 越界入余量=" << st.outOfDieEndpoints
+              << ") avg=" << (st.nets ? static_cast<double>(st.endpoints) /
+                                            st.nets
+                                      : 0.0)
+              << "\n";
+    std::cout << "-- 容量表 -- grid=" << st.cols << "x" << st.rows << "x"
+              << st.layers << " cells=" << st.cells
+              << " blocked=" << st.blockedCells << " cap min/avg/max="
+              << st.capMin << "/" << st.capAvg << "/" << st.capMax << "\n";
+    std::cout << "-- 代价表 -- unitMove=" << st.unitMoveDbu
+              << " dbu via=" << st.viaCostDbu << " tsv=" << st.tsvCostDbu
+              << "\n";
+    std::cout << "-- 温度表 -- probes=" << st.probes << " min/avg/max="
+              << st.tMin << "/" << st.tAvg << "/" << st.tMax
+              << " default=" << st.tDefault << " thermalGrid="
+              << st.thermalCols << "x" << st.thermalRows << "\n";
+    // 第 6 步（布线）后续接入。
     return 0;
 }
